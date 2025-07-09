@@ -1,12 +1,83 @@
 import "./App.css";
-import HeroImage from "./pages/Home/assets/hero__image.png";
-import Logo from "./pages/Home/assets/Figura.png";
-import Filipe from "./pages/Home/assets/image 6.png";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Home from "./pages/Home";
+import { useEffect } from "react";
 
 function App() {
+  // const [target, setTarget] = useState<HTMLElement | null>(null);
+  let target: HTMLElement;
+  useEffect(() => {
+    const cursor = document.getElementById("cursor_circle");
+    const navLinks = document.querySelectorAll("header nav ul li a");
+
+    document.addEventListener("mousemove", (e) => {
+      if (cursor) {
+        cursor.animate(
+          {
+            translate: `${e.clientX - 3}px ${e.clientY - 3}px`,
+          },
+          { duration: 500, fill: "forwards" }
+        );
+        // Continue after mouse movement
+
+        // Check if the cursor overlaps an anchor element
+        const demo = e.target as HTMLElement;
+        if (demo.tagName.toLowerCase() === "a") {
+          target = demo;
+        }
+      }
+      // const target = document.querySelector(".initial_target");
+      if (cursor && target) {
+        const cursorRect = cursor.getBoundingClientRect();
+        const targetRect = target.getBoundingClientRect();
+        console.log(cursorRect);
+        console.log(targetRect);
+        // Check if the cursor overlaps the target element
+        if (
+          ((cursorRect.top < targetRect.top &&
+            cursorRect.bottom > targetRect.top) ||
+            (cursorRect.top < targetRect.bottom &&
+              cursorRect.bottom > targetRect.bottom) ||
+            (cursorRect.top > targetRect.top &&
+              cursorRect.bottom < targetRect.bottom)) &&
+          ((cursorRect.left < targetRect.left &&
+            cursorRect.right > targetRect.left) ||
+            (cursorRect.left < targetRect.right &&
+              cursorRect.right > targetRect.right) ||
+            (cursorRect.left > targetRect.left &&
+              cursorRect.right < targetRect.right))
+        ) {
+          target.classList.add("hovered");
+
+          cursor.animate(
+            {
+              width: "70px",
+              height: "70px",
+              transform: "translate(-25%, -25%)",
+            },
+            { duration: 500, fill: "forwards" }
+          );
+        } else {
+          navLinks.forEach((link) => {
+            link.classList.remove("hovered");
+          });
+          cursor.animate(
+            {
+              width: "15px",
+              height: "15px",
+              transform: "translate(25%, 25%)",
+            },
+            { duration: 500, fill: "forwards" }
+          );
+        }
+      }
+    });
+  }, []);
+  // If the target element changes, check if the cursor overlaps it
+  useEffect(() => {}, []);
+
   gsap.registerPlugin(ScrollTrigger);
 
   useGSAP(() => {
@@ -23,98 +94,8 @@ function App() {
 
   return (
     <>
-      <section className="hero wrapper">
-        <header>
-          <div className="logo">
-            <img src={Logo} alt="THE BEACON" />
-          </div>
-          <nav>
-            <ul>
-              <li>
-                <a href="#">Home</a>
-              </li>
-              <li>
-                <a href="#">Quem somos</a>
-              </li>
-              <li>
-                <a href="#">Serviços</a>
-              </li>
-              <li>
-                <a href="#">Projetos</a>
-              </li>
-            </ul>
-          </nav>
-          <a className="header__contactButton" href="#">
-            <span>NOS CONTATE</span>
-          </a>
-        </header>
-        <div className="container-hero">
-          <div className="hero__content">
-            <h2>
-              &lt; The Beac<span>o</span>n /&gt;
-            </h2>
-
-            <p>
-              Erga um farol,
-              <br /> e atraia todos até você.
-            </p>
-
-            <a href="#" className="hero__content__button">
-              <span>NOS CONTATE</span>
-            </a>
-          </div>
-          <div className="hero__image__container">
-            <img className="hero__image" src={HeroImage} alt="" />
-          </div>
-        </div>
-      </section>
-
-      <section className="about-us">
-        <div className="container-about-us wrapper">
-          <span className="section-name">&#123; "Quem somos" &#125; </span>
-          <div className="about-us__cards-container">
-            <div className="cards__wrapper">
-              <div className="about-us__card">
-                <div className="card__image-container">
-                  <img src={Filipe} alt="" />
-                </div>
-                <h3>
-                  Hello, i'm: <br /> Filipe Augusto Souza Vilas Bôas
-                </h3>
-                <span>Graduando em Análise e Desenvolvimento de Sistemas</span>
-              </div>
-              <div className="about-us__card">
-                <div className="card__image-container">
-                  <img src={Filipe} alt="" />
-                </div>
-                <h3>
-                  Hello, i'm: <br /> Naiara Matanovic Tenorio
-                </h3>
-                <span>Graduando em Análise e Desenvolvimento de Sistemas</span>
-              </div>
-            </div>
-          </div>
-          <div className="about-us__content">
-            <h2>Sobre nós...</h2>
-            <p>
-              // Somos a{" "}
-              <span>
-                The Beacon<strong>®</strong>
-              </span>
-              , uma agência de desenvolvimento web de Amparo-SP, especializada
-              em criar soluções digitais que conectam negócios ao seu público.
-              Combinamos design criativo, tecnologia avançada e estratégias
-              eficazes para desenvolver websites personalizados, otimizados para
-              performance e resultados. <br />
-              Nosso compromisso é transformar a presença digital da sua empresa,
-              ajudando sua marca a crescer, se destacar no mercado e construir
-              conexões significativas com os clientes. Seja um pequeno negócio
-              ou uma grande empresa, estamos prontos para levar suas ideias ao
-              próximo nível. //
-            </p>
-          </div>
-        </div>
-      </section>
+      <div className="cursor_circle" id="cursor_circle"></div>
+      <Home />
     </>
   );
 }

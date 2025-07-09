@@ -7,16 +7,30 @@
   text-decoration: none;
   color: #000;
   list-style: none;
+  cursor: none;
 }
 
 html,
 body {
   height: 100%;
+  overflow-x: hidden;
+  cursor: none;
+  background-color: #fdfff8;
+}
+
+*:hover {
+  cursor: none;
 }
 
 .wrapper {
-  max-width: 1440px;
+  max-width: 1180px;
   margin: 0 auto;
   padding: 0 2%;
   position: relative;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #000;
+  cursor: none;
 }

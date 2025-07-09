@@ -1,0 +1,106 @@
+.about-us {
+  background-color: #e94852;
+  position: relative;
+}
+
+.container-about-us {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.about-us__cards-container {
+  width: 60%;
+  border-radius: 1rem;
+  position: relative;
+  box-shadow: 8px 8px 0 #d63c45;
+  transform: scaleY(1.2) scaleX(1.2) translateX(10%);
+  background: url("./assets/waves.png") #ff4f5a;
+  background-position: center right;
+  background-size: cover;
+  background-blend-mode: darken;
+}
+
+.cards__wrapper {
+  position: absolute;
+  right: -20px;
+  top: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.about-us__card {
+  background-color: #fdfff8;
+  border-radius: 1rem;
+  margin-bottom: 6em;
+  font-family: "Jersey 10", sans-serif;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-width: 80%;
+  box-shadow: 5px 5px 0 #cf2934;
+}
+
+.card__image-container {
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #ffc801;
+  transform: scale(0.4);
+  position: absolute;
+  top: -140px;
+  left: -100px;
+  z-index: 1;
+}
+.card__image-container img {
+  mix-blend-mode: multiply;
+  opacity: 0.6;
+  filter: saturate(1.35);
+}
+
+.about-us__card h3 {
+  z-index: 2;
+  min-width: 80%;
+  align-self: flex-end;
+  font-weight: normal;
+  font-size: 1rem;
+  margin-bottom: 3rem;
+}
+
+.about-us__card span {
+  padding: 0.5rem;
+  color: #e94852;
+}
+
+.about-us__content {
+  font-family: "Jersey 10", sans-serif;
+  padding-bottom: 10rem;
+}
+
+.about-us__content h2 {
+  margin-top: 3rem;
+  font-size: 5rem;
+  color: #ffc801;
+  font-weight: normal;
+}
+
+.about-us__content p {
+  margin-top: 3rem;
+  text-align: justify;
+  color: #ffc801;
+  font-size: 1.5rem;
+  line-height: 1.2;
+
+  span {
+    color: #fff;
+  }
+
+  span {
+    strong {
+      font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif, Times, serif;
+      font-size: x-small;
+      color: #fff;
+      vertical-align: super;
+    }
+  }
+}

@@ -1,0 +1,172 @@
+.services {
+  margin-top: 8rem;
+  font-family: "Jersey 10", sans-serif;
+  position: relative;
+}
+
+.container-services {
+  border-radius: 3rem;
+  background: url("./assets/services_waves.png") no-repeat #ff4f5a;
+  background-blend-mode: darken;
+  width: 100%;
+  position: relative;
+  padding-bottom: 5rem;
+}
+
+.section-name-variant {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  color: #fff;
+  font-size: 5rem;
+  font-weight: normal;
+}
+
+.carousel {
+  padding-bottom: 100px;
+}
+
+.services__carousel__container {
+  height: 100%;
+}
+
+.services__card__mask {
+  background-color: #1b1f21;
+  position: absolute;
+  margin-left: -50vw;
+  left: 50%;
+  width: 100vw;
+  height: calc(100% - 10rem);
+}
+
+.services__card {
+  width: 100vw;
+  h3 {
+    color: #ffc801;
+    text-align: center;
+    font-size: 5rem;
+  }
+}
+
+.services__card__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  height: 500px;
+}
+
+.services__card__content-img {
+  width: 100%;
+  border-radius: 2rem;
+
+  background-size: cover;
+  background-blend-mode: hard-light;
+}
+
+.tirar-uma-ideia-do-papel {
+  background: url("./assets/IdeiasDoPapel.png") no-repeat #e94852;
+  background-position: center;
+}
+
+.services__card__content-img.reinventar-meu-site {
+  background: url("./assets/siteAntigo.png") no-repeat #ffc801;
+  background-blend-mode: overlay;
+  background-position: center;
+  background-size: cover;
+}
+
+.services__card__content-img.minha-empresa-online {
+  background: url("./assets/empresaOnline.png") no-repeat #ffc801;
+  background-blend-mode: darken;
+  background-position: center;
+  background-size: cover;
+}
+.services__card__content-img.minha-landing-page {
+  background: url("./assets/empresaOnline.png") no-repeat #ffc801;
+  background-blend-mode: darken;
+  background-position: center;
+  background-size: cover;
+}
+
+.services__card__content-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8rem;
+  p {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    color: #fff;
+    text-align: justify;
+  }
+}
+
+.services__card__content-text__button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffc801;
+  border-radius: 2rem;
+
+  span {
+    color: #000;
+    font-size: 4rem;
+    pointer-events: none;
+  }
+}
+
+.carousel-indicators {
+  display: flex;
+  margin: 0;
+  gap: 1rem;
+  li {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transition: all 300ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  li:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: all 300ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+  li.active {
+    background-color: #e94852;
+  }
+}
+
+.carousel-control-prev {
+  width: 10%;
+  left: -10%;
+}
+.carousel-control-next {
+  width: 10%;
+  right: -10%;
+}
+
+.container-services-details {
+  margin-top: 5rem;
+}
+.service-details {
+  display: flex;
+  gap: 2rem;
+  height: 500px;
+  margin-bottom: 4rem;
+}
+.service-details:nth-of-type(even) {
+  flex-direction: row-reverse;
+}
+.service-details div {
+  width: 50%;
+}
+
+@media screen and (max-width: 1440px) {
+  .carousel-control-prev {
+    display: none;
+  }
+  .carousel-control-next {
+    width: 10%;
+    display: none;
+  }
+}
